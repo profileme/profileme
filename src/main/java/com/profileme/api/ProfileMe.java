@@ -1,8 +1,10 @@
 package com.profileme.api;
 
 import com.profileme.entity.ProfileHeader;
+import com.profileme.error.ApiError;
 import com.profileme.service.ProfileHeaderService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Optional;
@@ -21,8 +23,11 @@ public class ProfileMe {
     }
 
     @GetMapping("/header/{id}")
-    public Optional<ProfileHeader> getProfileHeaderById(@PathVariable Long id){
-        return profileHeaderService.getProfileHeaderById(id);
+    public Optional<ProfileHeader> getProfileHeaderById(@PathVariable Long id) throws ApiError {
+        Optional<ProfileHeader> profileHeaderById = profileHeaderService.getProfileHeaderById(id);
+        if(!profileHeaderById.isPresent()) throw new ApiError(HttpStatus.NOT_FOUND,"Resource Not Found");
+        return profileHeaderById;
+
     }
 }
 
