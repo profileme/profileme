@@ -1,15 +1,10 @@
 package com.profileme.error;
 
-import com.sun.xml.internal.ws.client.sei.ResponseBuilder;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
-import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
 @ControllerAdvice
@@ -18,8 +13,8 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExcep
 public class ApiErrorHandler extends ResponseEntityExceptionHandler {
 
 
-    @ExceptionHandler(ApiError.class)
-    public ResponseEntity<String> profileNotFound(ApiError error,WebRequest request) {
+    @ExceptionHandler
+    public ResponseEntity<String> profileNotFound(ApiError error) {
         log.info("--------------------------------------------------inside handler *********************************************");
         log.info(error.getStatus().toString());
         log.info(error.getMessage());
