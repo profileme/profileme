@@ -35,6 +35,6 @@ jobs:
        password: ${{ secrets.DOCKERHUB_PASSWORD }}
      
     - name: push to Docker hub 
-      run: docker push anasalsarairah/profileme:$(date +%s)
+      run: docker push profileme:$(date +%s)
      
     
