@@ -32,7 +32,7 @@ jobs:
       with:
        registry: ghcr.io
        username: ${{ secrets.DOCKERHUB_USERNAME }}
-       password: ${{ secrets.DOCKERHUB_PASSWORD }}
+       password: ${{ secrets.DOCKERHUB_TOKEN }}
      
     - name: push to Docker hub 
       run: docker push anasalsarairah/profileme:$(date +%s)
