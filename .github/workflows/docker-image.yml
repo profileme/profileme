@@ -24,6 +24,12 @@ jobs:
     - name: Build with Maven
       run: mvn -B package --file pom.xml
       
+    - name: Bump version and push tag
+      uses: anothrNick/github-tag-action@1.26.0
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        WITH_V: true
+      
     - name: Build the Docker image
       run: docker build . --file Dockerfile --tag anasalsarairah/profileme:latest
     
