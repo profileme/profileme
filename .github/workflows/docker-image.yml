@@ -24,7 +24,8 @@ jobs:
     - name: Build with Maven
       run: mvn -B package --file pom.xml
       
-    - name: release
+    - name: Pump and Release
+      id: release
       uses: anothrNick/github-tag-action@1.26.0
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
