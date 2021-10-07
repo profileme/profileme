@@ -43,6 +43,6 @@ jobs:
        password: ${{ secrets.DOCKERHUB_PASSWORD }}
      
     - name: push to Docker hub 
-      run: docker push anasalsarairah/profileme:${{ steps.release.outputs.new_tag }}
+      run: docker push anasalsarairah/profileme:latest anasalsarairah/profileme:${{ steps.release.outputs.new_tag }}
      
     
