@@ -45,7 +45,9 @@ jobs:
        username: ${{ secrets.DOCKERHUB_USERNAME }}
        password: ${{ secrets.DOCKERHUB_PASSWORD }}
      
-    - name: push to Docker hub 
+    - name: push version to Docker hub 
       run: docker push anasalsarairah/profileme:latest anasalsarairah/profileme:${{ steps.release.outputs.new_tag }}
+    - name: push latest to Docker Hub
+      run: docker push anasalsarairah/profileme:latest anasalsarairah/profileme:latest
      
     
