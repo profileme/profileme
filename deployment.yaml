@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: profileme
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: profileme
+  template:
+    metadata:
+      labels:
+        app: profileme
+    spec:
+      containers:
+        - name: profileme
+          image: anasalsarairah/profileme:latest
+          ports:
+            - containerPort: 80
